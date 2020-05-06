@@ -1,13 +1,14 @@
 package williamlopes.requisicoeshttp.pokedex.model;
 
-public class Pokedex
-{
+import java.util.List;
+
+public class Pokedex {
     private List<Pokemon> pokemon;
 
-    public Pokedex() {
+    public Pokedex() { //Construtor vazio
     }
 
-    public Pokedex(List<Pokemon> pokemon) {
+    public Pokedex(List<Pokemon> pokemon) { //Construtor com a lista de pokémons
         this.pokemon = pokemon;
     }
 
