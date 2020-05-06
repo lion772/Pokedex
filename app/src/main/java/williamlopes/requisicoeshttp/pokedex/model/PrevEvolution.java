@@ -1,8 +1,16 @@
 package williamlopes.requisicoeshttp.pokedex.model;
 
 class PrevEvolution {
-    public String num;
-    public String name;
+    private String num;
+    private String name;
+
+    public PrevEvolution() {
+    }
+
+    public PrevEvolution(String num, String name) {
+        this.num = num;
+        this.name = name;
+    }
 
     public String getNum() {
         return num;
