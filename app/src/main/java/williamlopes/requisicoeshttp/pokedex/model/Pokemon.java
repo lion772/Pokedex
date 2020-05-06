@@ -2,7 +2,7 @@ package williamlopes.requisicoeshttp.pokedex.model;
 
 import java.util.List;
 
-class Pokemon {
+public class Pokemon {
 
     private int id;
     private String num;

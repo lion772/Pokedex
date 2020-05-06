@@ -1,8 +1,16 @@
 package williamlopes.requisicoeshttp.pokedex.model;
 
-class NextEvolution {
+public class NextEvolution {
     public String num;
     public String name;
+
+    public NextEvolution() {
+    }
+
+    public NextEvolution(String num, String name) {
+        this.num = num;
+        this.name = name;
+    }
 
     public String getNum() {
         return num;
