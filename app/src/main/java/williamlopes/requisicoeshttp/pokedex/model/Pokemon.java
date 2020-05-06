@@ -17,7 +17,7 @@ class Pokemon {
     public double spawn_chance;
     public double avg_spawns;
     public String spawn_time;
-    public List<double> multipliers;
+    public List<Double> multipliers;
     public List<String> weaknesses;
     public List<NextEvolution> next_evolution;
     public List<PrevEvolution> prev_evolution;
