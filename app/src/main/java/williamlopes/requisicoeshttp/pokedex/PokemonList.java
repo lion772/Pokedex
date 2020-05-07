@@ -30,6 +30,8 @@ import williamlopes.requisicoeshttp.pokedex.model.Pokedex;
  */
 public class PokemonList extends Fragment {
 
+    /* CompositeDisposable é apenas uma classe para manter todos os seus descartáveis
+     ​ no mesmo local para que você possa dispor de tudo de uma só vez. Todos então são descartados */
     IPokemon iPokemon;
     CompositeDisposable compositeDisposable = new CompositeDisposable();
     RecyclerView pokemon_list_recyclerview;
