@@ -18,9 +18,11 @@ import io.reactivex.disposables.CompositeDisposable;
 import io.reactivex.functions.Consumer;
 import io.reactivex.schedulers.Schedulers;
 import retrofit2.Retrofit;
+import williamlopes.requisicoeshttp.pokedex.Common.Common;
 import williamlopes.requisicoeshttp.pokedex.Common.ItemOffsetDecoration;
 import williamlopes.requisicoeshttp.pokedex.Retrofit.IPokemon;
 import williamlopes.requisicoeshttp.pokedex.Retrofit.RetrofitClient;
+import williamlopes.requisicoeshttp.pokedex.adapter.PokemonListAdapter;
 import williamlopes.requisicoeshttp.pokedex.model.Pokedex;
 
 /**
@@ -71,7 +73,10 @@ public class PokemonList extends Fragment {
                 .subscribe(new Consumer<Pokedex>() {
                     @Override
                     public void accept(Pokedex pokedex) throws Exception {
+                        Common.commonPokemonList = pokedex.getPokemon();
+                        PokemonListAdapter adapter = new PokemonListAdapter(getActivity(), Common.commonPokemonList);
 
+                        pokemon_list_recyclerview.setAdapter(adapter);
                     }
                 })
         );
