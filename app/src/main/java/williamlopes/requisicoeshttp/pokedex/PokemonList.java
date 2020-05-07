@@ -12,11 +12,16 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import io.reactivex.Scheduler;
+import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.CompositeDisposable;
+import io.reactivex.functions.Consumer;
+import io.reactivex.schedulers.Schedulers;
 import retrofit2.Retrofit;
 import williamlopes.requisicoeshttp.pokedex.Common.ItemOffsetDecoration;
 import williamlopes.requisicoeshttp.pokedex.Retrofit.IPokemon;
 import williamlopes.requisicoeshttp.pokedex.Retrofit.RetrofitClient;
+import williamlopes.requisicoeshttp.pokedex.model.Pokedex;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -53,8 +58,22 @@ public class PokemonList extends Fragment {
         ItemOffsetDecoration itemOffsetDecoration = new ItemOffsetDecoration(getActivity(), R.dimen.spacing);
         pokemon_list_recyclerview.addItemDecoration(itemOffsetDecoration);
 
-
+        fetchData();
 
         return view;
+    }
+
+    private void fetchData() {
+
+        compositeDisposable.add(iPokemon.getListPokemon()
+        .subscribeOn(Schedulers.io())
+        .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new Consumer<Pokedex>() {
+                    @Override
+                    public void accept(Pokedex pokedex) throws Exception {
+
+                    }
+                })
+        );
     }
 }
