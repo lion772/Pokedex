@@ -1,7 +1,6 @@
 package williamlopes.requisicoeshttp.pokedex.adapter;
 
 import android.content.Context;
-import android.net.Uri;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -31,7 +30,7 @@ public class PokemonListAdapter extends RecyclerView.Adapter<PokemonListAdapter.
     @NonNull
     @Override
     public MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View itemLista = LayoutInflater.from(parent.getContext()).inflate(R.layout.pokemon_list_item, parent, false);
+        View itemLista = LayoutInflater.from(parent.getContext()).inflate(R.layout.adapter_pokemon_list_item, parent, false);
         return new MyViewHolder( itemLista );
     }
 
