@@ -14,6 +14,7 @@ import android.widget.TextView;
 
 import io.reactivex.disposables.CompositeDisposable;
 import retrofit2.Retrofit;
+import williamlopes.requisicoeshttp.pokedex.Common.ItemOffsetDecoration;
 import williamlopes.requisicoeshttp.pokedex.Retrofit.IPokemon;
 import williamlopes.requisicoeshttp.pokedex.Retrofit.RetrofitClient;
 
@@ -49,6 +50,10 @@ public class PokemonList extends Fragment {
         pokemon_list_recyclerview = view.findViewById(R.id.pokemon_list_recyclerview);
         pokemon_list_recyclerview.setHasFixedSize(true);
         pokemon_list_recyclerview.setLayoutManager(new GridLayoutManager(getActivity(), 2));
+        ItemOffsetDecoration itemOffsetDecoration = new ItemOffsetDecoration(getActivity(), R.dimen.spacing);
+        pokemon_list_recyclerview.addItemDecoration(itemOffsetDecoration);
+
+
 
         return view;
     }
