@@ -4,10 +4,12 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
+import androidx.localbroadcastmanager.content.LocalBroadcastManager;
 
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.os.Bundle;
 
 import williamlopes.requisicoeshttp.pokedex.Common.Common;
@@ -51,5 +53,9 @@ public class MainActivity extends AppCompatActivity {
         toolbar = findViewById(R.id.toolbar);
         toolbar.setTitle("POKEMON LISTA");
         setSupportActionBar(toolbar);
+
+        //Registrando a Broadcast
+        LocalBroadcastManager.getInstance(this)
+                .registerReceiver(showDetail, new IntentFilter(Common.KEY_ENABLE_HOME));
     }
 }
