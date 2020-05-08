@@ -15,6 +15,7 @@ import android.widget.TextView;
 import com.bumptech.glide.Glide;
 
 import williamlopes.requisicoeshttp.pokedex.Common.Common;
+import williamlopes.requisicoeshttp.pokedex.adapter.PokemonEvolutionAdapter;
 import williamlopes.requisicoeshttp.pokedex.adapter.PokemonTypeAdapter;
 import williamlopes.requisicoeshttp.pokedex.model.Pokemon;
 
@@ -96,6 +97,13 @@ public class PokemonDetail extends Fragment {
         //Set Weakness
         PokemonTypeAdapter weaknessAdapter = new PokemonTypeAdapter(getActivity(), pokemon.getWeaknesses());
         recycler_weakness.setAdapter(weaknessAdapter);
+
+        //Set Evolutions
+        PokemonEvolutionAdapter prevEvolutionAdapter = new PokemonEvolutionAdapter(getActivity(), pokemon.getPrev_evolution());
+        recycler_prev_evolution.setAdapter(prevEvolutionAdapter);
+
+        PokemonEvolutionAdapter nextEvolutionAdapter = new PokemonEvolutionAdapter(getActivity(), pokemon.getNext_evolution());
+        recycler_next_evolution.setAdapter(nextEvolutionAdapter);
 
     }
 }
