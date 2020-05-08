@@ -1,8 +1,10 @@
 package williamlopes.requisicoeshttp.pokedex;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 import androidx.localbroadcastmanager.content.LocalBroadcastManager;
 
@@ -11,6 +13,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.os.Bundle;
+import android.view.MenuItem;
 
 import williamlopes.requisicoeshttp.pokedex.Common.Common;
 import williamlopes.requisicoeshttp.pokedex.model.Pokemon;
@@ -57,5 +60,23 @@ public class MainActivity extends AppCompatActivity {
         //Registrando a Broadcast
         LocalBroadcastManager.getInstance(this)
                 .registerReceiver(showDetail, new IntentFilter(Common.KEY_ENABLE_HOME));
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        switch (item.getItemId()){
+
+            case android.R.id.home:
+                toolbar.setTitle("POKEMON LIST");
+                //clear all detail fragment and return to list fragment
+                getSupportFragmentManager().popBackStack("detail", FragmentManager.POP_BACK_STACK_INCLUSIVE);
+
+                getSupportActionBar().setDisplayHomeAsUpEnabled(false);
+                getSupportActionBar().setDisplayShowHomeEnabled(false);
+
+                break;
+                default:
+        }
+        return true;
     }
 }
