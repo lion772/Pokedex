@@ -15,6 +15,7 @@ import android.widget.TextView;
 import com.bumptech.glide.Glide;
 
 import williamlopes.requisicoeshttp.pokedex.Common.Common;
+import williamlopes.requisicoeshttp.pokedex.adapter.PokemonTypeAdapter;
 import williamlopes.requisicoeshttp.pokedex.model.Pokemon;
 
 
@@ -87,5 +88,10 @@ public class PokemonDetail extends Fragment {
         pokemon_name.setText(pokemon.getName());
         pokemon_weight.setText("Weight: " + pokemon.getWeight());
         pokemon_height.setText("Height: " + pokemon.getHeight());
+
+        //Set Type
+        PokemonTypeAdapter typeAdapter = new PokemonTypeAdapter(getActivity(), pokemon.getType());
+        recycler_type.setAdapter(typeAdapter);
+
     }
 }
