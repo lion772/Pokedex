@@ -13,6 +13,7 @@ import com.robertlevonyan.views.chip.OnChipClickListener;
 
 import java.util.List;
 
+import williamlopes.requisicoeshttp.pokedex.Common.Common;
 import williamlopes.requisicoeshttp.pokedex.Interface.IItemClickListener;
 import williamlopes.requisicoeshttp.pokedex.R;
 
@@ -38,6 +39,7 @@ public class PokemonTypeAdapter extends RecyclerView.Adapter<PokemonTypeAdapter.
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
 
         holder.chip.setChipText(listaTypes.get(position));
+        holder.chip.changeBackgroundColor(Common.getColorByType(listaTypes.get(position)));
 
     }
 
