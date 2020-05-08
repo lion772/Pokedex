@@ -40,7 +40,17 @@ public class PokemonTypeAdapter extends RecyclerView.Adapter<PokemonTypeAdapter.
 
         holder.chip.setChipText(listaTypes.get(position));
         holder.chip.changeBackgroundColor(Common.getColorByType(listaTypes.get(position)));
+        holder.setiItemClickListener(new IItemClickListener() {
+            @Override
+            public void onClick(View view, int position) {
 
+            }
+
+            @Override
+            public void onClick(View v) {
+
+            }
+        });
     }
 
     @Override

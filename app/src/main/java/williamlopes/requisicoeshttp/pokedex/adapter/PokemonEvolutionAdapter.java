@@ -12,6 +12,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.robertlevonyan.views.chip.Chip;
 import com.robertlevonyan.views.chip.OnChipClickListener;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import williamlopes.requisicoeshttp.pokedex.Common.Common;
@@ -27,7 +28,10 @@ public class PokemonEvolutionAdapter extends RecyclerView.Adapter<PokemonEvoluti
 
     public PokemonEvolutionAdapter(Context context, List<Evolution> listaEvolucoes) {
         this.context = context;
-        this.listaEvolucoes = listaEvolucoes;
+        if (listaEvolucoes != null )
+            this.listaEvolucoes = listaEvolucoes;
+        else
+            this.listaEvolucoes = new ArrayList<>();
     }
 
     @NonNull
@@ -42,9 +46,9 @@ public class PokemonEvolutionAdapter extends RecyclerView.Adapter<PokemonEvoluti
 
         holder.chip.setChipText(listaEvolucoes.get(position).getName());
         holder.chip.changeBackgroundColor(
-                Integer.parseInt(Common.findPokemonByNum(
-                        listaEvolucoes.get(position).getNum()
-                ).getType().get(0)));
+                Common.getColorByType(
+                        Common.findPokemonByNum(
+                                listaEvolucoes.get(position).getNum()).getType().get(0)));
 
         holder.setiItemClickListener(new IItemClickListener() {
             @Override
