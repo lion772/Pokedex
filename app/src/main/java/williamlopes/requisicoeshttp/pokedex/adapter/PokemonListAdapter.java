@@ -61,27 +61,25 @@ public class PokemonListAdapter extends RecyclerView.Adapter<PokemonListAdapter.
         return listaPokemons.size();
     }
 
-    public class MyViewHolder extends RecyclerView.ViewHolder{
+    public class MyViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
         ImageView pokemon_image;
         TextView pokemon_name;
-
         IItemClickListener iItemClickListener;
         public void setiItemClickListener(IItemClickListener iItemClickListener) {
             this.iItemClickListener = iItemClickListener;
         }
-
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
-
             pokemon_image = itemView.findViewById(R.id.pokemon_image);
             pokemon_name = itemView.findViewById(R.id.text_pokemon_name);
 
-            itemView.setOnClickListener(iItemClickListener); // make "MyViewHolder" implement "...View.OnClickListener"
+            itemView.setOnClickListener(this); // make "MyViewHolder" implement "...View.OnClickListener"
         }
-
-        public void onCreate(View view){
+        @Override
+        public void onClick(View view) {
             iItemClickListener.onClick(view, getAdapterPosition());
         }
+
     }
 }
