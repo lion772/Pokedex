@@ -1,6 +1,7 @@
 package williamlopes.requisicoeshttp.pokedex.adapter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -9,12 +10,14 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.localbroadcastmanager.content.LocalBroadcastManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 
 import java.util.List;
 
+import williamlopes.requisicoeshttp.pokedex.Common.Common;
 import williamlopes.requisicoeshttp.pokedex.Interface.IItemClickListener;
 import williamlopes.requisicoeshttp.pokedex.R;
 import williamlopes.requisicoeshttp.pokedex.model.Pokemon;
@@ -46,7 +49,10 @@ public class PokemonListAdapter extends RecyclerView.Adapter<PokemonListAdapter.
         holder.setiItemClickListener(new IItemClickListener() {
             @Override
             public void onClick(View view, int position) {
-                Toast.makeText(context, "Click at Pokémon: " + listaPokemons.get(position).getName(), Toast.LENGTH_LONG).show();
+                //Toast.makeText(context, "Click at Pokémon: " + listaPokemons.get(position).getName(), Toast.LENGTH_LONG).show();
+
+                LocalBroadcastManager.getInstance(context)
+                        .sendBroadcast(new Intent(Common.KEY_ENABLE_HOME).putExtra("position", position));
             }
 
             @Override
