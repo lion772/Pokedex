@@ -17,13 +17,13 @@ import williamlopes.requisicoeshttp.pokedex.Common.Common;
 import williamlopes.requisicoeshttp.pokedex.Interface.IItemClickListener;
 import williamlopes.requisicoeshttp.pokedex.R;
 
-public class PokemonTypeAdapter extends RecyclerView.Adapter<PokemonTypeAdapter.MyViewHolder> {
+public class PokemonEvolutionAdapter extends RecyclerView.Adapter<PokemonEvolutionAdapter.MyViewHolder> {
 
 
     Context context;
     List<String> listaTypes;
 
-    public PokemonTypeAdapter(Context context, List<String> listaTypes) {
+    public PokemonEvolutionAdapter(Context context, List<String> listaTypes) {
         this.context = context;
         this.listaTypes = listaTypes;
     }
@@ -36,7 +36,7 @@ public class PokemonTypeAdapter extends RecyclerView.Adapter<PokemonTypeAdapter.
     }
 
     @Override
-    public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull PokemonEvolutionAdapter.MyViewHolder holder, int position) {
 
         holder.chip.setChipText(listaTypes.get(position));
         holder.chip.changeBackgroundColor(Common.getColorByType(listaTypes.get(position)));
