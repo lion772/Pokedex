@@ -4,6 +4,7 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -16,16 +17,17 @@ import java.util.List;
 import williamlopes.requisicoeshttp.pokedex.Common.Common;
 import williamlopes.requisicoeshttp.pokedex.Interface.IItemClickListener;
 import williamlopes.requisicoeshttp.pokedex.R;
+import williamlopes.requisicoeshttp.pokedex.model.Evolution;
 
 public class PokemonEvolutionAdapter extends RecyclerView.Adapter<PokemonEvolutionAdapter.MyViewHolder> {
 
 
     Context context;
-    List<String> listaTypes;
+    List<Evolution> listaEvolucoes;
 
-    public PokemonEvolutionAdapter(Context context, List<String> listaTypes) {
+    public PokemonEvolutionAdapter(Context context, List<Evolution> listaEvolucoes) {
         this.context = context;
-        this.listaTypes = listaTypes;
+        this.listaEvolucoes = listaEvolucoes;
     }
 
     @NonNull
@@ -38,14 +40,29 @@ public class PokemonEvolutionAdapter extends RecyclerView.Adapter<PokemonEvoluti
     @Override
     public void onBindViewHolder(@NonNull PokemonEvolutionAdapter.MyViewHolder holder, int position) {
 
-        holder.chip.setChipText(listaTypes.get(position));
-        holder.chip.changeBackgroundColor(Common.getColorByType(listaTypes.get(position)));
+        holder.chip.setChipText(listaEvolucoes.get(position).getName());
+        holder.chip.changeBackgroundColor(
+                Integer.parseInt(Common.findPokemonByNum(
+                        listaEvolucoes.get(position).getNum()
+                ).getType().get(0)));
+
+        holder.setiItemClickListener(new IItemClickListener() {
+            @Override
+            public void onClick(View view, int position) {
+                Toast.makeText(context, "Click to evolution pokemon", Toast.LENGTH_SHORT).show();
+            }
+
+            @Override
+            public void onClick(View v) {
+
+            }
+        });
 
     }
 
     @Override
     public int getItemCount() {
-        return listaTypes.size();
+        return listaEvolucoes.size();
     }
 
     public class MyViewHolder extends RecyclerView.ViewHolder {
