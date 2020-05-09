@@ -134,7 +134,7 @@ public class PokemonList extends Fragment {
                 }
             }
             search_adapter = new PokemonListAdapter(getActivity(), result);
-            pokemon_list_recyclerview.setAdapter(adapter);
+            pokemon_list_recyclerview.setAdapter(search_adapter);
         }
     }
 
@@ -157,6 +157,7 @@ public class PokemonList extends Fragment {
                             last_suggest.add(pokemon.getName());
                         }
                         searchBar.setVisibility(View.VISIBLE); // Exibir a search bar depois de carregar todos os pokemons
+                        searchBar.setLastSuggestions(last_suggest);
                     }
                 })
         );
