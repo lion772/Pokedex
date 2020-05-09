@@ -1,12 +1,14 @@
 package williamlopes.requisicoeshttp.pokedex.adapter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.localbroadcastmanager.content.LocalBroadcastManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.robertlevonyan.views.chip.Chip;
@@ -50,17 +52,7 @@ public class PokemonEvolutionAdapter extends RecyclerView.Adapter<PokemonEvoluti
                         Common.findPokemonByNum(
                                 listaEvolucoes.get(position).getNum()).getType().get(0)));
 
-        holder.setiItemClickListener(new IItemClickListener() {
-            @Override
-            public void onClick(View view, int position) {
-                Toast.makeText(context, "Click to evolution pokemon", Toast.LENGTH_SHORT).show();
-            }
 
-            @Override
-            public void onClick(View v) {
-
-            }
-        });
 
     }
 
@@ -71,13 +63,7 @@ public class PokemonEvolutionAdapter extends RecyclerView.Adapter<PokemonEvoluti
 
     public class MyViewHolder extends RecyclerView.ViewHolder {
 
-
         Chip chip;
-        IItemClickListener iItemClickListener;
-
-        public void setiItemClickListener(IItemClickListener iItemClickListener) {
-            this.iItemClickListener = iItemClickListener;
-        }
 
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -85,7 +71,9 @@ public class PokemonEvolutionAdapter extends RecyclerView.Adapter<PokemonEvoluti
             chip.setOnChipClickListener(new OnChipClickListener() {
                 @Override
                 public void onChipClick(View v) {
-                    iItemClickListener.onClick(v, getAdapterPosition());
+                    LocalBroadcastManager.getInstance(context)
+                            .sendBroadcast(new Intent(Common.KEY_NUM_EVOLUTION)
+                                    .putExtra("num", listaEvolucoes.get(getAdapterPosition()).getNum()));
                 }
             });
         }
