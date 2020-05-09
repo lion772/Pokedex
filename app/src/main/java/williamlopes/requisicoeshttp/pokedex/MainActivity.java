@@ -56,18 +56,19 @@ public class MainActivity extends AppCompatActivity {
 
                 //Substituir o fragment
                 Fragment detailFragment = PokemonDetail.getInstance();
-                int position = intent.getIntExtra("position", -1);
                 Bundle bundle = new Bundle();
-                bundle.putInt("position", position);
+                String num = intent.getStringExtra("num");
+                bundle.putString("num", num);
                 detailFragment.setArguments(bundle);
 
                 FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
+                fragmentTransaction.remove(detailFragment); //Remove o atual fragment
                 fragmentTransaction.replace(R.id.list_pokemon_fragment, detailFragment);
                 fragmentTransaction.addToBackStack("detail");
                 fragmentTransaction.commit();
 
                 //Setar nome do pokémon na Toolbar
-                Pokemon pokemon = Common.commonPokemonList.get(position);
+                Pokemon pokemon = Common.findPokemonByNum(num);
                 toolbar.setTitle(pokemon.getName());
             }
         }
@@ -85,6 +86,10 @@ public class MainActivity extends AppCompatActivity {
         //Registrando a Broadcast
         LocalBroadcastManager.getInstance(this)
                 .registerReceiver(showDetail, new IntentFilter(Common.KEY_ENABLE_HOME));
+
+        //Registrando a Broadcast
+        LocalBroadcastManager.getInstance(this)
+                .registerReceiver(showEvolution, new IntentFilter(Common.KEY_NUM_EVOLUTION));
     }
 
     @Override
