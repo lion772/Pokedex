@@ -47,6 +47,9 @@ dependencies {
     //ChipView
     implementation 'com.robertlevonyan.view:MaterialChipView:1.2.4'
 
+    //Material Search Bar
+    implementation 'com.github.mancj:MaterialSearchBar:0.8.5'
+
     //Outras
     implementation 'androidx.appcompat:appcompat:1.1.0'
     implementation 'com.google.android.material:material:1.1.0'
