@@ -129,7 +129,7 @@ public class PokemonList extends Fragment {
         if (Common.commonPokemonList.size() > 0){
             List<Pokemon> result = new ArrayList<>();
             for (Pokemon pokemon: Common.commonPokemonList){
-                if (pokemon.getName().contains(text)){
+                if (pokemon.getName().toLowerCase().contains(text.toString().toLowerCase())){
                     result.add(pokemon);
                 }
             }
