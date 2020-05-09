@@ -52,7 +52,7 @@ public class PokemonListAdapter extends RecyclerView.Adapter<PokemonListAdapter.
                 //Toast.makeText(context, "Click at Pokémon: " + listaPokemons.get(position).getName(), Toast.LENGTH_LONG).show();
 
                 LocalBroadcastManager.getInstance(context)
-                        .sendBroadcast(new Intent(Common.KEY_ENABLE_HOME).putExtra("position", position));
+                        .sendBroadcast(new Intent(Common.KEY_ENABLE_HOME).putExtra("num", listaPokemons.get(position).getNum()));
             }
 
             @Override
