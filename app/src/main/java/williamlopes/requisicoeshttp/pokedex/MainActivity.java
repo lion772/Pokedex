@@ -48,6 +48,31 @@ public class MainActivity extends AppCompatActivity {
         }
     };
 
+    BroadcastReceiver showEvolution = new BroadcastReceiver() {
+        @Override
+        public void onReceive(Context context, Intent intent) {
+            if(intent.getAction().toString().equals(Common.KEY_NUM_EVOLUTION)){
+
+
+                //Substituir o fragment
+                Fragment detailFragment = PokemonDetail.getInstance();
+                int position = intent.getIntExtra("position", -1);
+                Bundle bundle = new Bundle();
+                bundle.putInt("position", position);
+                detailFragment.setArguments(bundle);
+
+                FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
+                fragmentTransaction.replace(R.id.list_pokemon_fragment, detailFragment);
+                fragmentTransaction.addToBackStack("detail");
+                fragmentTransaction.commit();
+
+                //Setar nome do pokémon na Toolbar
+                Pokemon pokemon = Common.commonPokemonList.get(position);
+                toolbar.setTitle(pokemon.getName());
+            }
+        }
+    };
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

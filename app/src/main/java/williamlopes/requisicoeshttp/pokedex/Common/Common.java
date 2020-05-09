@@ -11,6 +11,7 @@ import williamlopes.requisicoeshttp.pokedex.model.Pokemon;
 public class Common {
     public static List<Pokemon> commonPokemonList = new ArrayList<>();
     public static final String KEY_ENABLE_HOME = "enable_home";
+    public static String KEY_NUM_EVOLUTION="num_evolution";
 
     //Função para setar as cores
     public static int getColorByType(String type) {
