@@ -31,9 +31,9 @@ public class MainActivity extends AppCompatActivity {
 
                 //Substituir o fragment
                 Fragment detailFragment = PokemonDetail.getInstance();
-                int position = intent.getIntExtra("position", -1);
+                String num = intent.getStringExtra("num");
                 Bundle bundle = new Bundle();
-                bundle.putInt("position", position);
+                bundle.putString("num", num);
                 detailFragment.setArguments(bundle);
 
                 FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
@@ -42,7 +42,7 @@ public class MainActivity extends AppCompatActivity {
                 fragmentTransaction.commit();
 
                 //Setar nome do pokémon na Toolbar
-                Pokemon pokemon = Common.commonPokemonList.get(position);
+                Pokemon pokemon = Common.findPokemonByNum(num);
                 toolbar.setTitle(pokemon.getName());
             }
         }
